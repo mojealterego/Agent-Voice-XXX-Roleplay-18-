@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mojealterego/Agent-Voice-XXX-Roleplay-18-/schemas/persona.schema.json",
+  "title": "VOICE COMPANION Persona",
+  "type": "object",
+  "required": ["schema_version", "id", "display_name", "identity", "language", "style", "voice", "boundaries"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "identity": {
+      "type": "object",
+      "required": ["role", "description"],
+      "properties": {
+        "role": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "language": {
+      "type": "object",
+      "required": ["mode", "primary", "supported"],
+      "properties": {
+        "mode": { "enum": ["auto", "explicit"] },
+        "primary": { "type": "string", "minLength": 2 },
+        "supported": { "type": "array", "items": { "type": "string", "minLength": 2 }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "tone": { "type": "string" },
+        "verbosity": { "type": "string" },
+        "formality": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "voice": {
+      "type": "object",
+      "required": ["provider", "voice_id"],
+      "properties": {
+        "provider": { "type": ["string", "null"] },
+        "voice_id": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "boundaries": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
