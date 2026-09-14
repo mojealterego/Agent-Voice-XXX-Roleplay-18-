@@ -3,7 +3,7 @@
 **System ID:** `VOICE-COMPANION-GLOBAL-ENGINE-GOD-MODE-Ω∞`  
 **Project class:** Autonomous International Voice Companion Interactive Architecture  
 **Repository:** `mojealterego/Agent-Voice-XXX-Roleplay-18-`  
-**Status:** ACTIVE — foundation phase
+**Status:** ACTIVE — foundation + architecture implementation
 
 > This repository implements the supplied XML as a technical project specification. The specification is treated as an engineering architecture, not as a roleplay instruction.
 
@@ -186,19 +186,18 @@ This enables the same logical companion state to move between compatible clients
 
 Configuration belongs in version-controlled, human-readable files wherever practical.
 
-Planned structure:
+Current structure:
 
 ```text
 /
 ├── README.md
 ├── docs/
-│   ├── architecture/
-│   ├── protocols/
-│   └── decisions/
+│   └── architecture/
+│       └── ARCHITECTURE.md
 ├── config/
-│   ├── personas/
-│   ├── voices/
-│   └── providers/
+│   └── personas/
+│       ├── default.json
+│       └── persona.schema.json
 ├── src/
 │   ├── audio/
 │   ├── stt/
@@ -235,7 +234,7 @@ The exact implementation structure may evolve during implementation, but subsyst
 
 ### Completed
 - [x] Canonical repository identified.
-- [x] Repository verified as currently empty before initialization.
+- [x] Repository verified as empty before initialization.
 - [x] Initial `README.md` created in the repository.
 - [x] Core Audio → STT → Orchestrator → Persona/Memory → LLM → TTS architecture defined.
 - [x] Multilingual architecture baseline defined.
@@ -243,15 +242,17 @@ The exact implementation structure may evolve during implementation, but subsyst
 - [x] Memory layer model defined.
 - [x] Relationship-state abstraction defined.
 - [x] Provider-independent architecture established.
+- [x] Architecture specification added to `docs/architecture/ARCHITECTURE.md`.
+- [x] Canonical persona configuration created at `config/personas/default.json`.
+- [x] Persona JSON Schema created at `config/personas/persona.schema.json`.
 
-### Next implementation stage
-- [ ] Establish repository directory structure.
-- [ ] Define canonical configuration schemas.
-- [ ] Define provider interfaces for STT, LLM and TTS.
-- [ ] Implement conversation/session state model.
+### In progress / next
+- [ ] Define canonical STT/LLM/TTS provider contracts.
+- [ ] Define session/turn state schema.
 - [ ] Implement orchestrator skeleton.
-- [ ] Implement persona loading and validation.
+- [ ] Implement persona loading and schema validation.
 - [ ] Implement memory interfaces and storage adapter boundary.
+- [ ] Implement relationship-state model.
 - [ ] Add automated tests for the core state machine.
 - [ ] Add runtime observability.
 - [ ] Build the first end-to-end voice loop.
@@ -264,7 +265,13 @@ The exact implementation structure may evolve during implementation, but subsyst
 - Repository `mojealterego/Agent-Voice-XXX-Roleplay-18-` verified.
 - `README.md` initialized as the canonical project ledger.
 - Architecture baseline recorded.
-- From this point forward, significant project decisions, implementation stages, completed work, blockers and next actions are to be recorded in this file.
+
+### 2026-09-14 — Architecture implementation pass
+- Added `docs/architecture/ARCHITECTURE.md`.
+- Added canonical development persona configuration.
+- Added versioned JSON Schema for persona validation.
+- Updated repository structure from planned to current state.
+- Reduced the next implementation stage to concrete provider contracts, state schemas and executable orchestration.
 
 ---
 
